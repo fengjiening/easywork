@@ -1,11 +1,9 @@
 package org.fengjiening;
 
+import io.swagger.annotations.ApiModel;
 import lombok.extern.slf4j.Slf4j;
-import org.fengjiening.constant.ProvinceCityArea;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.annotation.Resource;
+import org.springframework.boot.SpringApplication;
 
 @Slf4j
 public class UtilApplication {

@@ -1,10 +1,9 @@
-package org.fengjiening.result;
+package org.fengjiening.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.fengjiening.constant.CommonConstant;
-
 
 import java.io.Serializable;
 
