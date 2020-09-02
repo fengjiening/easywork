@@ -19,9 +19,7 @@ import java.util.List;
 public class tec
 {
 
-   private   List<User> list = new ArrayList<>();
-
-
+    private   List<User> list = new ArrayList<>();
     @PostConstruct
     public void init() {
         log.debug("PostConstruct  init");
@@ -43,7 +41,7 @@ public class tec
             list.add(new User("杭州1", "小黄", 21));
             list.add(new User("贵阳1", "小白", 22));
             // Step.3 AutoPoi 导出Excel
-            ModelAndView mv = new ModelAndView(new ExcelEntityView(list,User.class,"c://","文件","这是一个标题"));
+            ModelAndView mv = new ModelAndView(new ExcelEntityView(list,User.class,"c://","文件123456","这是一个标题"));
             return mv;
         }
 }

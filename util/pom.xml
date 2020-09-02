@@ -24,7 +24,7 @@
 			<artifactId>cores</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-    </dependencies>
+	</dependencies>
 	<repositories>
 		<repository>
 			<!-- A unique identifier for a repository. -->
@@ -52,38 +52,6 @@
 					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
 				</configuration>
 			</plugin>
-			<!--<plugin>-->
-				<!--&lt;!&ndash; Deploy the web site &ndash;&gt;-->
-				<!--<groupId>com.github.github</groupId>-->
-				<!--<artifactId>site-maven-plugin</artifactId>-->
-				<!--<version>0.11</version>-->
-				<!--<executions>-->
-					<!--<execution>-->
-						<!--<goals>-->
-							<!--<goal>site</goal>-->
-						<!--</goals>-->
-						<!--&lt;!&ndash; select the Maven phase in which the plugin will be executed &ndash;&gt;-->
-						<!--<phase>deploy</phase>-->
-						<!--<configuration>-->
-							<!--&lt;!&ndash; Plugin configuration goes here &ndash;&gt;-->
-							<!--<server>github</server>-->
-							<!--&lt;!&ndash; The commit message &ndash;&gt;-->
-							<!--<message>init git maven repository</message>-->
-							<!--&lt;!&ndash; The location where the site is uploaded &ndash;&gt;-->
-							<!--<repositoryName>mvn-repo</repositoryName> &lt;!&ndash; github repo name &ndash;&gt;-->
-							<!--<repositoryOwner>fengjiening</repositoryOwner> &lt;!&ndash; organization or user name  &ndash;&gt;-->
-							<!--&lt;!&ndash; Use merge or override the content &ndash;&gt;-->
-							<!--<merge>true</merge>-->
-							<!--<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>-->
-							<!--<branch>master</branch>-->
-							<!--&lt;!&ndash;                        <includes>&ndash;&gt;-->
-							<!--&lt;!&ndash;                            <include>**/*</include>&ndash;&gt;-->
-							<!--&lt;!&ndash;                        </includes>&ndash;&gt;-->
-						<!--</configuration>-->
-					<!--</execution>-->
-				<!--</executions>-->
-			<!--</plugin>-->
-
 			<plugin>
 				<groupId> com.github.github </groupId>
 				<artifactId> site-maven-plugin </artifactId>

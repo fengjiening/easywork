@@ -1,15 +1,12 @@
 package org.fengjiening.excel;
 
-import ch.qos.logback.core.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.fengjiening.excel.view.ExcelAbstractExcelView;
 import org.fengjiening.exception.WorkException;
-import org.fengjiening.util.FileUtils;
 import org.jeecgframework.poi.excel.ExcelExportUtil;
 import org.jeecgframework.poi.excel.entity.ExportParams;
-import org.jeecgframework.poi.excel.export.ExcelExportServer;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +16,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +25,6 @@ import java.util.Map;
 public class ExcelEntityView  extends ExcelAbstractExcelView {
 
     private String fileName;
-    private String createName;
     private Collection exportList;
     private Class entityClass;
     private String path;
@@ -51,6 +46,7 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
         entity.setSecondTitle("系统生成");
         entity.setSheetName(fileName);
         entity.setTitle(title);
+        entity.setHeaderColor((short)44);
     }
 
     /**
@@ -70,6 +66,7 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
         entity.setSecondTitle(createName);
         entity.setSheetName(fileName);
         entity.setTitle(title);
+        entity.setHeaderColor((short)44);
     }
 
     /**
@@ -90,6 +87,28 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
         entity.setSecondTitle(createName);
         entity.setSheetName(sheetName);
         entity.setTitle(title);
+        entity.setHeaderColor((short)44);
+    }
+    /**
+     * @param exportList 数据集
+     * @param entityClass 实体class对象
+     * @param path      保存位置
+     * @param fileName 文件名
+     * @param title 表格标题
+     * @param createName 创建人
+     * @param sheetName sheet名字
+     * @param headColor 表头背景
+     */
+    public ExcelEntityView(Collection exportList ,Class entityClass,String path,String fileName,String title,String createName,String sheetName,short headColor) {
+        this.fileName=fileName;
+        this.exportList=exportList;
+        this.entityClass=entityClass;
+        this.path=path;
+        this.entity=new ExportParams();
+        entity.setSecondTitle(createName);
+        entity.setSheetName(sheetName);
+        entity.setTitle(title);
+        entity.setHeaderColor(headColor);
     }
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {

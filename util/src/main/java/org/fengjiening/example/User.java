@@ -3,11 +3,13 @@ package org.fengjiening.example;
 import lombok.Data;
 import org.jeecgframework.poi.excel.annotation.Excel;
 
+import java.io.Serializable;
+
 /**
  * Created by fengjiening on 2020/9/1.
  */
 @Data
-public class User {
+public class User implements Serializable {
 
     @Excel(name = "姓名", width = 15)
     private String name;
