@@ -1,4 +1,4 @@
-package org.fengjiening;
+package org.fengjiening.example;
 
 import lombok.extern.slf4j.Slf4j;
 import org.fengjiening.example.User;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Controller
 @Slf4j
-public class tec
+public class ControllerExcelFile
 {
 
     private   List<User> list = new ArrayList<>();
