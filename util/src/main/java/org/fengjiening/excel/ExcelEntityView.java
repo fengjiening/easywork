@@ -117,10 +117,6 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
             log.error("请检查参数");
             throw new WorkException("请检查参数");
         }
-        if(!new File(path).isDirectory()) {
-            log.error("文件路径有误");
-            throw new WorkException("文件路径有误");
-        }
         workbook = ExcelExportUtil.exportExcel(entity, entityClass, exportList,null );
         String codedFileName=URLEncoder.encode(fileName, "UTF-8");
         if(workbook instanceof HSSFWorkbook) {

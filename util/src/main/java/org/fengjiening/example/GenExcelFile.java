@@ -23,15 +23,6 @@ public class GenExcelFile
         list.add(new User("杭州", "小黄", 21));
         list.add(new User("贵阳", "小白", 22));
     }
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
     @Test
     public void testExe() throws Exception {
         //模拟数据 fileName,Collection exportList ,Class entityClass,String path
