@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fengjiening</groupId>
 	<artifactId>util</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -25,52 +25,61 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<!-- A unique identifier for a repository. -->
-			<id>mvn-repo</id>
-			<url>https://raw.githubusercontent.com/fengjiening/mvn-repo/master</url>
-			<releases>
-				<enabled>true</enabled>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
 	<build>
 		<plugins>
-			<!--1.作用：将jar deploy(发布)到本地储存库位置(altDeploymentRepository)-->
+			<!--打包插件-->
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>2.8.1</version>
 				<configuration>
-					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/repository</altDeploymentRepository>
 				</configuration>
 			</plugin>
+
+			<!--源码-->
 			<plugin>
-				<groupId> com.github.github </groupId>
-				<artifactId> site-maven-plugin </artifactId>
-				<version> 0.11 </version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--github上传插件,用于修改后的发布,执行 mvn clean deploy 自动打包上传到github-->
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version >0.12</version>
 				<configuration>
-					<message> Maven artifacts for ${project.version} </message> <!-- git commit message -->
-					<noJekyll> true </noJekyll>  <!-- disable webpage processing -->
-					<outputDirectory> ${project.build.directory}/mvn-repo </outputDirectory> <!-- matches distribution management repository url above -->
-					<branch> refs/heads/mvn-repo </branch> <!-- remote branch name -->
-					<includes><include> **/* </include></includes>
-					<repositoryName> mvn-repo </repositoryName> <!-- github repo name -->
-					<repositoryOwner>fengjiening</repositoryOwner> <!-- organization or user name  -->
+					<message >Maven artifacts for ${project.version}</message>
+					<noJekyll>true</noJekyll>
+					<!--本地jar地址-->
+					<outputDirectory>${project.build.directory}/repository</outputDirectory>
+					<!--分支-->
+					<branch>refs/heads/master</branch>
+					<merge>true</merge>
+
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<!--对应github上创建的仓库名称 name-->
+					<repositoryName>mvn-repo</repositoryName>
+					<!--github 仓库所有者 不是账号-->
+					<repositoryOwner>fengjiening</repositoryOwner>
 				</configuration>
-				<executions> <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+
+				<executions>
 					<execution>
 						<goals>
-							<goal> site </goal>
+							<goal>site</goal>
 						</goals>
-						<phase> deploy </phase>
+						<phase>deploy</phase>
 					</execution>
 				</executions>
 			</plugin>
