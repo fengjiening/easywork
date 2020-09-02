@@ -1,18 +1,18 @@
-package org.fengjiening.example;
-
-import org.fengjiening.excel.model.ExcelEntityView;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+package org.fengjiening;
 
 import static org.junit.Assert.assertTrue;
+
+import org.fengjiening.example.User;
+import org.fengjiening.excel.ExcelEntityView;
+import org.junit.Test;
+
+import java.util.*;
 
 
 /**
  * Unit test for simple App.
  */
-public class GenExcelFile
+public class AppTest 
 {
     public static List<User> list = new ArrayList<>();
     static {
@@ -35,6 +35,6 @@ public class GenExcelFile
     @Test
     public void testExe() throws Exception {
         //模拟数据 fileName,Collection exportList ,Class entityClass,String path
-        new ExcelEntityView(list,User.class,"c://","文件","这是一个标题").toExcelFile();
+        new ExcelEntityView(list,User.class,"文件","文件","这是一个标题").toExcelFile();
     }
 }

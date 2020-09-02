@@ -1,4 +1,4 @@
-package org.fengjiening.excel.model;
+package org.fengjiening.excel;
 
 import ch.qos.logback.core.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -93,7 +93,6 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
     }
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String codedFileName = "临时文件";
         Workbook workbook = null;
         if(fileName==null||exportList==null||entityClass==null||path==null) {
             log.error("请检查参数");
@@ -103,24 +102,13 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
             log.error("文件路径有误");
             throw new WorkException("文件路径有误");
         }
-        workbook = ExcelExportUtil.exportExcel((ExportParams)model.get("params"), (Class)model.get("entity"), (Collection)model.get("data"),null );
-
-        if(model.containsKey("fileName")) {
-            codedFileName = (String)model.get("fileName");
-        }
-
+        workbook = ExcelExportUtil.exportExcel(entity, entityClass, exportList,null );
+        String codedFileName=URLEncoder.encode(fileName, "UTF-8");
         if(workbook instanceof HSSFWorkbook) {
             codedFileName = codedFileName + ".xls";
         } else {
             codedFileName = codedFileName + ".xlsx";
         }
-
-        if(this.isIE(request)) {
-            codedFileName = URLEncoder.encode(codedFileName, "UTF8");
-        } else {
-            codedFileName = new String(codedFileName.getBytes("UTF-8"), "ISO-8859-1");
-        }
-
         response.setHeader("content-disposition", "attachment;filename=" + codedFileName);
         ServletOutputStream out = response.getOutputStream();
         workbook.write(out);
@@ -153,6 +141,6 @@ public class ExcelEntityView  extends ExcelAbstractExcelView {
         OutputStream out =new FileOutputStream(file);
         workbook.write(out);
         out.flush();
-
+        out.close();
     }
 }
