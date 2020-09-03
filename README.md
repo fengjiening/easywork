@@ -5,7 +5,7 @@
 
 在项目中使用 util jar包
 (1)在pom.xml里增加
-<repositories>
+`<repositories>
     <repository>
         <!-- A unique identifier for a repository. -->
         <id>github-repo</id>
@@ -20,11 +20,11 @@
             <checksumPolicy>warn</checksumPolicy>
         </snapshots>
     </repository>
-</repositories>
+</repositories>`
 
 (1)在pom.xml </dependencies> 里增加
-<dependency>
+`<dependency>
     <groupId>org.fengjiening</groupId>
     <artifactId>util</artifactId>
     <version>0.0.4-SNAPSHOT</version>
-</dependency>
+</dependency>`
