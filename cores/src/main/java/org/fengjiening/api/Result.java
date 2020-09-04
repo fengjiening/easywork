@@ -55,7 +55,7 @@ public class Result<T> implements Serializable {
 	
 	public Result<T> success(String message) {
 		this.message = message;
-		this.code = CommonConstant.SC_OK_200;
+		this.code = CommonConstant.SC_OK;
 		this.success = true;
 		return this;
 	}
@@ -64,7 +64,7 @@ public class Result<T> implements Serializable {
 	public static Result<Object> ok() {
 		Result<Object> r = new Result<Object>();
 		r.setSuccess(true);
-		r.setCode(CommonConstant.SC_OK_200);
+		r.setCode(CommonConstant.SC_OK);
 		r.setMessage("成功");
 		return r;
 	}
@@ -72,7 +72,7 @@ public class Result<T> implements Serializable {
 	public static Result<Object> ok(String msg) {
 		Result<Object> r = new Result<Object>();
 		r.setSuccess(true);
-		r.setCode(CommonConstant.SC_OK_200);
+		r.setCode(CommonConstant.SC_OK);
 		r.setMessage(msg);
 		return r;
 	}
@@ -80,7 +80,7 @@ public class Result<T> implements Serializable {
 	public static Result<Object> ok(Object data) {
 		Result<Object> r = new Result<Object>();
 		r.setSuccess(true);
-		r.setCode(CommonConstant.SC_OK_200);
+		r.setCode(CommonConstant.SC_OK);
 		r.setResult(data);
 		return r;
 	}
@@ -88,7 +88,7 @@ public class Result<T> implements Serializable {
 		Result<Object> r = new Result<Object>();
 		r.setCode(code);
 		r.setSuccess(true);
-		r.setCode(CommonConstant.SC_OK_200);
+		r.setCode(CommonConstant.SC_OK);
 		r.setResult(data);
 		return r;
 	}

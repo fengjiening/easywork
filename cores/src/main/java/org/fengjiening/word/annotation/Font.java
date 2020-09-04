@@ -7,17 +7,17 @@ import java.lang.annotation.Target;
 
 /**
  * Created by fengjiening on 2020/9/3.
+ * 设置文字样式
  * @author fengjiening
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-public @interface Word {
+@Target({ElementType.FIELD})
 
-    String fileName() default "nuName";
-    String fileType() default "doc";
-    short  bgColor() default 0;
-    String trmpFile() default "";
-    String newPath() default "C://";
+public @interface Font {
+    boolean center() default true;
+    boolean  bold() default false;
+    short fontSize() default 24;
+
 
 }
 

@@ -10,14 +10,8 @@ import java.lang.annotation.Target;
  * @author fengjiening
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-public @interface Word {
-
-    String fileName() default "nuName";
-    String fileType() default "doc";
-    short  bgColor() default 0;
-    String trmpFile() default "";
-    String newPath() default "C://";
+@Target({ElementType.FIELD})
+public @interface Title {
 
 }
 
