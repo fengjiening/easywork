@@ -25,6 +25,8 @@ public class AppTest
         list.add(new User("广州", "小灰", 20));
         list.add(new User("杭州", "小黄", 21));
         list.add(new User("贵阳", "小白", 22));
+
+       // ==============111111================
     }
     /**
      * Rigorous Test :-)
@@ -38,7 +40,7 @@ public class AppTest
     @Test
     public void testExe() throws Exception {
         //模拟数据 fileName,Collection exportList ,Class entityClass,String path
-        new ExcelEntityView(list,User.class,"文件","文件","这是一个标题").toExcelFile();
+        new ExcelEntityView(list,User.class,"c://","文件","这是一个标题").toExcelFile();
     }
 
     @Test
